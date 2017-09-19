@@ -1,4 +1,12 @@
 // ****General methods****
+  // #Demethodize : takes a prototype method and converts it to a binary function
+
+  function demethodize(protoMethod){
+    return function(that,y){
+      return protoMethod.call(that,y);
+    };
+  }
+
   // #Methodize : attaches an existing function for use with a prototype
   function methodize(func){
     // var this = that;
@@ -6,7 +14,6 @@
     return func(this, y);
       };
   }
-
 
 // ****Array prototype methods****
 
