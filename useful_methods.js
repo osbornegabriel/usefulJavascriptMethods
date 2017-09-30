@@ -24,9 +24,12 @@
 
 
 
-
 // ****String prototype methods****
 
+  // #Capitalize: Returns a string with the first letter uppercased
+  String.prototype.capitalize = function(){
+    return this[0].toUpperCase() + this.slice(1, this.length);
+  }
 
   // #Pop : Returns a string with the last character removed
   String.prototype.pop = function(){
