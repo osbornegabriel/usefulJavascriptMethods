@@ -1,4 +1,18 @@
 // ****General methods****
+  // #ajaxRequest : takes a jquery url object (Either from a form or an anchor tag) and sends an ajax request
+
+  function ajaxRequest($form){
+    event.preventDefault();
+    var formMethod = $form.attr('method');
+    var formUrl = $form.attr('action') || $form.attr('href');
+    var formData = $form.serialize();
+    return $.ajax({
+      url: formUrl,
+      method: formMethod,
+      data: formData
+    })
+  }
+
   // #Demethodize : takes a prototype method and converts it to a binary function
 
   function demethodize(protoMethod){
@@ -19,6 +33,17 @@
   // #Sample : Returns a random value from the array's collection
   Array.prototype.sample = function(){
     return this[Math.floor(Math.random() * this.length)];
+  }
+
+  // #Some : Evaluates if at least one item in the array matches conditions
+  Array.prototype.some = function(f){
+    var includes;
+    this.forEach(function(i){
+      if (f(i) === true){
+        includes = true;
+      }
+    })
+    return !!includes;
   }
 
   // #ToObject : Converts an array of pairs into an object literal. The keys are the 1st item in each array pair, the values are the 2nd item in each array pair. If the starting array does not follow a pair format, the method returns the original array.
